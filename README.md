@@ -1,6 +1,6 @@
 # Kit
 
-`KIT` contains small utility functions, that I constantly need in my projects.
+`Kit` contains small utility functions, that I constantly need in my projects.
 
 ## Installation
 

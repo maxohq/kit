@@ -1,14 +1,22 @@
 defmodule Kit.MixProject do
   use Mix.Project
 
+  @github_url "https://github.com/maxohq/kit"
+  @version "0.1.0"
+  @description "Kit - A package with useful functions for Elixir"
+
   def project do
     [
       app: :kit,
-      version: "0.1.0",
-      elixir: "~> 1.17",
+      version: @version,
+      source_url: @github_url,
+      description: @description,
+      elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
       test_paths: ["lib"],
-      deps: deps()
+      deps: deps(),
+      package: package(),
+      docs: [extras: ["README.md"]]
     ]
   end
 
@@ -19,11 +27,22 @@ defmodule Kit.MixProject do
     ]
   end
 
+  defp package do
+    [
+      files: ~w(lib mix.exs README* CHANGELOG* LICENCE*),
+      exclude_patterns: [~r/.*_test.exs/, ~r/test_helper.exs/],
+      licenses: ["MIT"],
+      links: %{
+        "Github" => @github_url,
+        "Changelog" => "#{@github_url}/blob/main/CHANGELOG.md"
+      }
+    ]
+  end
+
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+      {:ex_doc, "~> 0.29", only: :dev, runtime: false}
     ]
   end
 end
